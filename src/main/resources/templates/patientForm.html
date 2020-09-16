@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor´s Office</title>
+</head>
+
+<body>
+
+<p>Selected date: <span th:text="${selectedappointment.name}" >Appointment</span> </p>
+<p></p>
+<h2>Please enter your personal data.</h2>
+<form method="POST" th:action="@{/reservation/patient}" name="patientendatenform" th:object="${sessionpatient}">
+
+    <div class="grid">
+
+
+    <p></p>
+
+    <div class="personal-data-group">
+        <div class = "firstname">
+            <label for="firstname">First Name:</label>
+            <input name="personal-data" id="firstname" type="text" th:field="*{firstName}"/>
+        </div>
+        <div class = "lastname">
+            <label for="lastname">Last Name:</label>
+            <input name="personal-data" id="lastname" type="text" th:field="*{lastName}"/>
+        </div>
+        <div class = "telNo">
+            <label for="telNo">Telefone Number:</label>
+            <input name="personal-data" id="telNo" type="tel" th:field="*{telNo}"/>
+        </div>
+        <div class = "email">
+            <label for="email">Email:</label>
+            <input ame="personal-data" id="email" type="email" th:field="*{email}"/>
+        </div>
+
+    </div>
+    <div>
+        <input type="submit" value="Register">
+    </div>
+
+    </div>
+
+
+</form>
+
+
+</body>
+</html>

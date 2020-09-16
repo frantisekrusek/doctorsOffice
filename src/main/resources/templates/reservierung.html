@@ -1,0 +1,51 @@
+<!DOCTYPE html> <!-- -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Dr. Franz Arztpraxis</title>
+</head>
+<body>
+<img th:src="@{/images/VikingFranz.jpg}" alt="Vikinger-Franz, Dr."><br/>
+<h1>Choose your preferred date: </h1>
+
+<!-- -->
+<form th:action="@{/reservation}" name="terminauswahlform" method="POST" th:object="${appointment}">
+<!--    <div class="grid">-->
+<!--        <div th:each="termin : ${updatedDates}">-->
+<!--            <div th:switch="${termin.belegt}">-->
+<!--        <p th:case="false"><del  th:text="${termin.name}">durchgestrichen</del></p>-->
+<!--        <p th:case="true" th:text="${termin.name}">durchgestrichen</p>-->
+<!--            </div>-->
+<!--    </div>-->
+
+
+    <div class="grid">
+        <div th:each="termin : ${updatedDates}">
+            <div th:switch="${termin.belegt}">
+                <div th:case="false">
+                    <span th:text="${termin.name}">APPOINTMENT</span>
+                    <input name="id" id="id" type="radio" th:value="${termin.id}" /><br/>
+                </div>
+                <div th:case="true">
+                <span><del th:text="${termin.name}" >APPOINTMENT</del></span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!--    <div th:switch="${user.role}">-->
+<!--        <p th:case="'admin'">User is an administrator</p>-->
+<!--        <p th:case="#{roles.manager}">User is a manager</p>-->
+<!--        <p th:case="*">User is some other thing</p>-->
+<!--    </div>-->
+
+    <div>
+        <button>Reserve Appointment</button>
+    </div>
+</form>
+</body>
+</html>
